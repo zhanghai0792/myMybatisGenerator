@@ -3,6 +3,7 @@ package mapperFormate;
 import java.util.List;
 
 import tableField.fieldDefine;
+import util.config;
 
 public class updateTemplate {
 private static String updateAll_id="updateAll";
@@ -14,7 +15,7 @@ private static String ifFieldTemp="<if test=\"%s != null\"> %s = #{%s,jdbcType=%
 private static String ifupdateHead=" <update id=\"%s\" parameterType=\"%s\">\r\nupdate %s<set>\r\n";
 public static String getUpdateAll(String tableName,List<fieldDefine> fields){
 	String className=tableName;
-	if(BaseResultMapTemplate.isDig){
+	if(config.isDig){
 		className=tableName.substring(0, 1).toUpperCase()+tableName.substring(1);
 	}
 	className=BaseResultMapTemplate.pojoPackage+"."+className;
@@ -37,7 +38,7 @@ public static String getUpdateAll(String tableName,List<fieldDefine> fields){
 
 public static String getUpdateNoNull(String tableName,List<fieldDefine> fields){
 	String className=tableName;
-	if(BaseResultMapTemplate.isDig){
+	if(config.isDig){
 		className=tableName.substring(0, 1).toUpperCase()+tableName.substring(1);
 	}
 	className=BaseResultMapTemplate.pojoPackage+"."+className;

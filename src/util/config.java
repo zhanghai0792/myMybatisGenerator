@@ -7,6 +7,9 @@ import java.sql.DriverManager;
 public class config {
 	//表名与别名的标记符
 public static String splitSingn="_";
+public static String queryPackageName="query";
+public static String queryStuff="QueryParams";
+public final static boolean isDig=true;//pojo类首字母是否大写
  private static String url="jdbc:mysql://localhost/students";
  private static String driver="com.mysql.jdbc.Driver";
  private static String userName="root";

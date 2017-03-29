@@ -3,6 +3,7 @@ package mapperFormate;
 import java.util.List;
 
 import tableField.fieldDefine;
+import util.config;
 
 public class insertTemplate {
 public static String insertNoNull_id="saveNoNull";
@@ -18,7 +19,7 @@ public static String getInsertAll(String tableName,List<fieldDefine> fields){
 	StringBuffer insertHead=new StringBuffer();
 	StringBuffer insertTail=new StringBuffer();
 	String className=tableName;
-	if(BaseResultMapTemplate.isDig){
+	if(config.isDig){
 		className=tableName.substring(0, 1).toUpperCase()+tableName.substring(1);
 	}
 	className=BaseResultMapTemplate.pojoPackage+"."+className;
@@ -47,7 +48,7 @@ public static String getInsertNoNull(String tableName,List<fieldDefine> fields){
 	StringBuffer insertHead=new StringBuffer();
 	StringBuffer insertTail=new StringBuffer();
 	String className=tableName;
-	if(BaseResultMapTemplate.isDig){
+	if(config.isDig){
 		className=tableName.substring(0, 1).toUpperCase()+tableName.substring(1);
 	}
 	className=BaseResultMapTemplate.pojoPackage+"."+className;

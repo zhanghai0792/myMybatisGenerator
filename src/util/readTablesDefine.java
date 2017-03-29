@@ -14,6 +14,7 @@ import mapperFormate.ColumnListTemplate;
 import mapperFormate.deleteTemplate;
 import mapperFormate.insertTemplate;
 import mapperFormate.selectByIdTemplate;
+import mapperFormate.selectTemplate;
 import mapperFormate.updateTemplate;
 import tableField.fieldDefine;
 
@@ -124,6 +125,10 @@ public static void writeMapper(){
 		
 		System.out.println(selectByIdTemplate.getBasic());
 		System.out.println(selectByIdTemplate.getDetail());
+		
+		System.out.println(selectTemplate.getCount(table.getKey()));
+		System.out.println(selectTemplate.getBasic(table.getKey()));
+		System.out.println(selectTemplate.getDetail(table.getKey()));
 	}
 }
 

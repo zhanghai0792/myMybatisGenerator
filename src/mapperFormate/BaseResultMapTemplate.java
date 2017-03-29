@@ -9,12 +9,13 @@ public class BaseResultMapTemplate {
 public static String baseResultId="BaseResultMap";
 public static String detailResultId="DetailResultMap";
 public static String pojoPackage="pojo";
-public static boolean isDig=true;//pojo类首字母是否大写
+/*public static boolean isDig=true;//pojo类首字母是否大写
+*/
 public static String idTemplate="<id column=\"%s\" jdbcType=\"%s\" property=\"%s\" />\r\n";
 public static String resultTemplate=" <result column=\"%s\" jdbcType=\"%s\" property=\"%s\" />\r\n";
 public static String getBasic(String tableName,List<fieldDefine> fields){
 	String className=tableName;
-	if(isDig){
+	if(config.isDig){
 		className=tableName.substring(0, 1).toUpperCase()+tableName.substring(1);
 	}
 	StringBuffer content=new StringBuffer();
@@ -35,7 +36,7 @@ public static String getBasic(String tableName,List<fieldDefine> fields){
 
 public static String getDetail(String tableName,List<fieldDefine> fields){
 	String className=tableName;
-	if(isDig){
+	if(config.isDig){
 		className=tableName.substring(0, 1).toUpperCase()+tableName.substring(1);
 	}
 	StringBuffer content=new StringBuffer();
