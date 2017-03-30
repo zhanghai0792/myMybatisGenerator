@@ -47,74 +47,87 @@ public static String createFilePath="c:\\mapper";
 		}
 	 
  }
- 
+ //生成相应的文件
  public static void write(){
+	 //生成mybatis的配置文件
 	 writerMapper.writerMappers();
+	 //生成对应的pojo类的文件
 	 writerPojoClass.writerPojosClass();
+	 //生成对应的查询类Query
 	 writerQueryClass.writerQueryClass();
  }
 
 
-
+//设置表名后的字符为 别名，如 student student_ splitSingn为_
 public static void setSplitSingn(String splitSingn) {
 	config.splitSingn = splitSingn;
 	
 }
 
-
+//生成的查询类所在的package名
 public static void setQueryPackageName(String queryPackageName) {
 	config.queryPackageName = queryPackageName;
 	
 }
 
 
-
+//查询类后面的部分,如 studentQueryParamas的后缀为QueryParamas
 public static void setQueryStuff(String queryStuff) {
 	config.queryStuff = queryStuff;
 }
 
 
-
+//生成的dao的包名
 public static void setMapperPackage(String mapperPackage) {
 	config.mapperPackage = mapperPackage;
 }
 
 
-
+//dao的后缀 如 stduentDao 后缀为Dao
 public static void setMapperPackageStuff(String mapperPackageStuff) {
 	config.mapperPackageStuff = mapperPackageStuff;
 }
 
 
-
+//设置连接的url
 public static void setUrl(String url) {
 	config.url = url;
 }
 
 
-
+//设置数据库的驱动
 public static void setDriver(String driver) {
 	config.driver = driver;
 }
 
 
-
+//数据库的连接用户名
 public static void setUserName(String userName) {
 	config.userName = userName;
 }
-
+//数据库的连接用户密码
 public static void setPwd(String pwd) {
 	config.pwd = pwd;
 }
 
 
-
+//生成的文件放在哪个目录下，要用绝对路径表示
 public static void setCreateFilePath(String createFilePath) {
 	config.createFilePath = createFilePath;
 }
-
+//设置的pojo类的包名
 public static void setPojoPackage(String pojoPackage) {
 	config.pojoPackage = pojoPackage;
+}
+
+
+//设置查询类父类的名字
+public static void setQueryParentClassName(String queryParentClassName) {
+	config.queryParentClassName = queryParentClassName;
+}
+//设置pojo类父类的名字
+public static void setPojoParentClassName(String pojoParentClassName) {
+	config.pojoParentClassName = pojoParentClassName;
 }
 
 
