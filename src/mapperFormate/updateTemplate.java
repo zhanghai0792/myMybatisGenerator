@@ -18,7 +18,7 @@ public static String getUpdateAll(String tableName,List<tableFieldDefine> fields
 	if(config.isDig){
 		className=tableName.substring(0, 1).toUpperCase()+tableName.substring(1);
 	}
-	className=BaseResultMapTemplate.pojoPackage+"."+className;
+	className=config.pojoPackage+"."+className;
 	String head=String.format(updateHead, updateAll_id,className,tableName);
 	StringBuffer sb=new StringBuffer();
 	sb.append(head);
@@ -41,7 +41,7 @@ public static String getUpdateNoNull(String tableName,List<tableFieldDefine> fie
 	if(config.isDig){
 		className=tableName.substring(0, 1).toUpperCase()+tableName.substring(1);
 	}
-	className=BaseResultMapTemplate.pojoPackage+"."+className;
+	className=config.pojoPackage+"."+className;
 	String head=String.format(ifupdateHead, updateNoNull_id,className,tableName);
 	StringBuffer sb=new StringBuffer();
 	sb.append(head);

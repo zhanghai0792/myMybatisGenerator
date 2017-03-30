@@ -8,7 +8,7 @@ import configuration.tableStruct.tableFieldDefine;
 public class BaseResultMapTemplate {
 public static String baseResultId="BaseResultMap";
 public static String detailResultId="DetailResultMap";
-public static String pojoPackage="pojo";
+//public static String pojoPackage="pojo";
 /*public static boolean isDig=true;//pojo类首字母是否大写
 */
 public static String idTemplate="<id column=\"%s\" jdbcType=\"%s\" property=\"%s\" />\r\n";
@@ -19,7 +19,7 @@ public static String getBasic(String tableName,List<tableFieldDefine> fields){
 		className=tableName.substring(0, 1).toUpperCase()+tableName.substring(1);
 	}
 	StringBuffer content=new StringBuffer();
-	content.append("\r\n<resultMap id=\""+baseResultId+"\" type=\""+pojoPackage+"."+className+"\">\r\n");
+	content.append("\r\n<resultMap id=\""+baseResultId+"\" type=\""+config.pojoPackage+"."+className+"\">\r\n");
 	for(tableFieldDefine f:fields){
 		if(f.isPrimaryKey()){
 			//是ID项目
@@ -40,7 +40,7 @@ public static String getDetail(String tableName,List<tableFieldDefine> fields){
 		className=tableName.substring(0, 1).toUpperCase()+tableName.substring(1);
 	}
 	StringBuffer content=new StringBuffer();
-	content.append("\r\n<resultMap id=\""+detailResultId+"\" type=\""+pojoPackage+"."+className+"\" extends=\""+baseResultId+"\">\r\n");
+	content.append("\r\n<resultMap id=\""+detailResultId+"\" type=\""+config.pojoPackage+"."+className+"\" extends=\""+baseResultId+"\">\r\n");
 	content.append("</resultMap>\r\n");
 	return content.toString();
 }

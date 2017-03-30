@@ -22,7 +22,7 @@ public static String getInsertAll(String tableName,List<tableFieldDefine> fields
 	if(config.isDig){
 		className=tableName.substring(0, 1).toUpperCase()+tableName.substring(1);
 	}
-	className=BaseResultMapTemplate.pojoPackage+"."+className;
+	className=config.pojoPackage+"."+className;
 	//insertHead.append(String.format(insert_head, insertAll_id,className,,tableName));
 	tableFieldDefine keyFd=null;
 	insertTail.append(" values(");
@@ -51,7 +51,7 @@ public static String getInsertNoNull(String tableName,List<tableFieldDefine> fie
 	if(config.isDig){
 		className=tableName.substring(0, 1).toUpperCase()+tableName.substring(1);
 	}
-	className=BaseResultMapTemplate.pojoPackage+"."+className;
+	className=config.pojoPackage+"."+className;
 	//insertHead.append(String.format(insert_head, insertAll_id,className,,tableName));
 	tableFieldDefine keyFd=null;
 	for(tableFieldDefine f:fields){
