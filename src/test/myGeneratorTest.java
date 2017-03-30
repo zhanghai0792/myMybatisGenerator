@@ -1,12 +1,14 @@
 package test;
 
-import util.readTablesDefine;
+import configuration.config;
+import configuration.read.ReadTablesStruct;
 
 public class myGeneratorTest {
 
 	public static void main(String[] args) {
-		readTablesDefine.readTableAndFields();
-		readTablesDefine.writeMapper();
+		//config.setCreateFilePath(createFilePath);
+		config.config();
+		config.write();
 
 	}
 
