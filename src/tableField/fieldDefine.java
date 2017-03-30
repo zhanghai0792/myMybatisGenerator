@@ -51,19 +51,12 @@ public fieldDefine() {
 	super();
 	// TODO Auto-generated constructor stub
 }
-public fieldDefine(String fieldName, String jdbcType, int length, int dotNumber, boolean isNull) {
-	super();
-	this.fieldName = fieldName;
-	this.jdbcType = jdbcType;
-	this.length = length;
-	this.dotNumber = dotNumber;
-	this.isNull = isNull;
-}
+
 public fieldDefine(String fieldName, String jdbcType,String javaType, int length, int dotNumber, int isNull) {
 	super();
 	this.fieldName = fieldName;
-	this.jdbcType = jdbcType.toUpperCase();
-	this.javaType=javaType;
+	this.jdbcType =typeMapper.jdbc_TypesMap.get(jdbcType.toUpperCase());
+	this.javaType=typeMapper.java_TypesMap.get(this.jdbcType);
 	this.length = length;
 	this.dotNumber = dotNumber;
 	this.isNull =(isNull==1);
@@ -77,7 +70,8 @@ public void setPrimaryKey(boolean isPrimaryKey) {
 public fieldDefine(String fieldName, String jdbcType,String javaType, int length, int dotNumber, int isNull, boolean isPrimaryKey) {
 	super();
 	this.fieldName = fieldName;
-	this.jdbcType = jdbcType;
+	this.jdbcType =typeMapper.jdbc_TypesMap.get(jdbcType.toUpperCase());
+	this.javaType=typeMapper.java_TypesMap.get(this.jdbcType);
 	this.length = length;
 	this.dotNumber = dotNumber;
 	this.isNull =(isNull==1);
