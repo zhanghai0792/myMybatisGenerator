@@ -8,7 +8,8 @@ import configuration.tableStruct.tableFieldDefine;
 import util.myStringUtil;
 
 public class queryClassCreateTemplate {
-	private static String basicClass="package %s;\r\nimport java.util.List;\r\npublic abstract class %s<T extends %s>{\r\nprotected Integer page;\r\nprotected Integer pageSize;\r\nprivate Integer recordIndex;\r\nprivate String orderBy;\r\nprivate List<T> pojos;\r\n}";
+	//private static String basicClass="package %s;\r\nimport java.util.List;\r\npublic abstract class %s<T extends %s>{\r\nprotected Integer page;\r\nprotected Integer pageSize;\r\nprivate Integer recordIndex;\r\nprivate String orderBy;\r\nprivate List<T> pojos;\r\n}";
+	private static String basicClass="package %s;\r\nimport java.util.List;\r\npublic abstract class %s<T extends %s>{\r\nprotected Integer page;\r\nprotected Integer pageSize;\r\nprotected Integer recordIndex;\r\nprotected String orderBy;\r\nprotected List<T> pojos;\r\nprotected String cond;\r\n}";	
 	private static String pojoQueryClass="package %s;\r\nimport %s.%s;\r\npublic class %s%s extends %s<%s> {\r\n\r\n}";
 	public static String getBasicClass(){
 		 String className=myStringUtil.firstCharToUpper(config.queryParentClassName);
