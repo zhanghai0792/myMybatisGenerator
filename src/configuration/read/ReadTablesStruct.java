@@ -106,7 +106,7 @@ public static void readTableAndFields() {
 			}
 	 
 }}
-
+/*
 public static void writeMapper(){
 	//Map<String,List<fieldDefine>> tableDefines=tableDefines;
 	for(Entry<String,List<tableFieldDefine>> table:tableDefines.entrySet()){
@@ -124,13 +124,13 @@ public static void writeMapper(){
 		System.out.println(updateTemplate.getUpdateAll(table.getKey(), table.getValue()));
 		System.out.println(updateTemplate.getUpdateNoNull(table.getKey(), table.getValue()));
 		
-		System.out.println(selectByIdTemplate.getBasic());
-		System.out.println(selectByIdTemplate.getDetail());
+		System.out.println(selectByIdTemplate.getBasic(tableName));
+		System.out.println(selectByIdTemplate.getDetail(tableName));
 		
 		System.out.println(selectTemplate.getCount(table.getKey()));
 		System.out.println(selectTemplate.getBasic(table.getKey()));
 		System.out.println(selectTemplate.getDetail(table.getKey()));
 	}
-}
+}*/
 
 }

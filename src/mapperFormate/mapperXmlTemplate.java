@@ -30,8 +30,8 @@ public class mapperXmlTemplate {
 		sb.append(updateTemplate.getUpdateAll(tableName, fds));
 		sb.append(updateTemplate.getUpdateNoNull(tableName, fds));
 		
-		sb.append(selectByIdTemplate.getBasic());
-		sb.append(selectByIdTemplate.getDetail());
+		sb.append(selectByIdTemplate.getBasic(tableName));
+		sb.append(selectByIdTemplate.getDetail(tableName));
 		
 		sb.append(selectTemplate.getCount(tableName));
 		sb.append(selectTemplate.getBasic(tableName));

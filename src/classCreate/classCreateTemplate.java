@@ -10,7 +10,7 @@ import configuration.tableStruct.tableFieldDefine;
 import util.myStringUtil;
 
 public class classCreateTemplate {
-	private static String basicClass="package %s;\r\nimport java.io.Serializable;\r\npublic class %s implements Serializable{\r\n protected Integer id;\r\npublic Integer getId() {\r\nreturn id;\r\n}\r\npublic void setId(Integer id) {\r\nthis.id = id;\r\n}\r\n}";
+	private static String basicClass="package %s;\r\nimport java.io.Serializable;\r\npublic class %s implements Serializable{\r\n protected Integer id;\r\npublic Integer getId() {\r\nreturn id;\r\n}\r\npublic void setId(Integer id) {\r\nthis.id = id;\r\n\r\n}public boolean equals(Object obj) {\r\n if(this.getClass().getName().equals(obj.getClass().getName())){\r\nreturn this.hashCode()==obj.hashCode();\r\n}\r\nreturn false;\r\n}\r\npublic int hashCode() {\r\nint basic=this.getClass().hashCode()*1000;\r\nif(id==null){\r\nreturn -basic;\r\n}else{\r\nreturn basic+id;\r\n}\r\n}\r\n}";
 	private static String classItemFormat="public %s get%s() {\r\nreturn %s;\r\n}\r\n\r\npublic void set%s(%s %s) {\r\nthis.%s = %s;\r\n}\r\n";
 	private static String classStringItemFormat="public %s get%s() {\r\nreturn %s;\r\n}\r\n\r\npublic void set%s(%s %s) {\r\nthis.%s = %s == null ? null : %s.trim();\r\n}\r\n";
 	private static String fieldContent="private %s %s;\r\n";

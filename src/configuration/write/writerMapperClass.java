@@ -10,23 +10,24 @@ import java.io.PrintWriter;
 import java.util.Set;
 
 import classCreate.classCreateTemplate;
+import classCreate.daoClassCreateTemplate;
 import classCreate.queryClassCreateTemplate;
 import configuration.config;
 import configuration.read.ReadTablesStruct;
 import mapperFormate.mapperXmlTemplate;
 import util.myStringUtil;
 
-public class writerQueryClass {
+public class writerMapperClass {
  public static File queryPackage;
 private static void createqueryPackage(){
 	  if(queryPackage==null){
-		  queryPackage=new File(config.createFilePath+"/"+config.queryPackageName);
+		  queryPackage=new File(config.createFilePath+"/"+config.mapperPackage);
 		  if(!queryPackage.exists())
 			  queryPackage.mkdirs();
 	  }
  }
-private static void createBasicPojoClass(){
-	String className=myStringUtil.firstCharToUpper(config.queryParentClassName);
+private static void createBasicMapperClass(){
+	String className=myStringUtil.firstCharToUpper(config.mapperParentClassName);
 String fileName=className+".java";
 if(queryPackage==null)
 	createqueryPackage();
@@ -35,7 +36,7 @@ PrintWriter pw=null;
 try {
 	
 	pw=new PrintWriter(outputFile);
-	pw.write(queryClassCreateTemplate.getBasicClass());	
+	pw.write(daoClassCreateTemplate.getBasicClass());	
 	pw.flush();
 	
 } catch (Exception e) {
@@ -48,20 +49,20 @@ try {
 } 
 
 
- public static void writerQueryClass(){
+ public static void writerMappersClass(){
 	 createqueryPackage();
-	 createBasicPojoClass();
+	 createBasicMapperClass();
 	 Set<String> tablenames=ReadTablesStruct.tableDefines.keySet();
 	 for(String tableName:tablenames)
-		 writerQueryMapper(tableName);
+		 writerMapperMapper(tableName);
  }
  
-private static void writerQueryMapper(String tableName){
+private static void writerMapperMapper(String tableName){
 	 String className=tableName;
 		if(config.isDig){
 			className=tableName.substring(0, 1).toUpperCase()+tableName.substring(1);
 		}
-	String fileName=className+config.queryStuff+".java";
+	String fileName=className+config.mapperPackageStuff+".java";
 	if(queryPackage==null)
 		createqueryPackage();
 	File outputFile=new File(queryPackage, fileName);
@@ -69,7 +70,7 @@ private static void writerQueryMapper(String tableName){
 	try {
 		
 		pw=new PrintWriter(outputFile);
-		pw.write(queryClassCreateTemplate.getPojoQueryClass(tableName));	
+		pw.write(daoClassCreateTemplate.getPojoMapperClass(tableName));	
 		pw.flush();
 		
 	} catch (Exception e) {

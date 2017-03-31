@@ -8,7 +8,9 @@ import java.sql.SQLException;
 import configuration.read.ReadTablesStruct;
 import configuration.write.writerPojoClass;
 import configuration.write.writerQueryClass;
-import configuration.write.writerMapper;
+import util.myStringUtil;
+import configuration.write.writerMapperClass;
+import configuration.write.writerMapperXml;
 
 public class config {
 	//表名与别名的标记符
@@ -19,6 +21,7 @@ public static String pojoParentClassName="basicModel";
 public static String queryPackageName="query";
 public static String queryStuff="QueryParams";//查询变量的后缀名
 public static String mapperPackage="dao";
+public static String mapperParentClassName="daoTemplate";
 public static String mapperPackageStuff="Dao";//dao的后缀名
 public final static boolean isDig=true;//pojo类首字母是否大写
  private static String url="jdbc:mysql://localhost/students";
@@ -28,7 +31,23 @@ public final static boolean isDig=true;//pojo类首字母是否大写
 public static String createFilePath="c:\\mapper";
  public static DatabaseMetaData  m_DBMetaData =null;
  public static Connection conn;
- public static void config(){
+ public static void configuration(String driver,String url,String userName,String pwd){
+	 setDriver(driver);
+	 setUrl(url);
+	 setUserName(userName);
+	 setPwd(pwd);
+	 config();
+ }
+ public static void configuration(){
+	 config();
+ }
+ 
+ private static void config(){
+	 queryParentClassName=myStringUtil.firstCharToUpper(queryParentClassName);
+	 pojoParentClassName=myStringUtil.firstCharToUpper(pojoParentClassName);
+	 mapperParentClassName=myStringUtil.firstCharToUpper(mapperParentClassName);
+	 
+	 
 	 try {
 			Class.forName(driver).newInstance();
 			conn = DriverManager.getConnection(url,userName,pwd);
@@ -50,11 +69,13 @@ public static String createFilePath="c:\\mapper";
  //生成相应的文件
  public static void write(){
 	 //生成mybatis的配置文件
-	 writerMapper.writerMappers();
+	 writerMapperXml.writerMappers();
 	 //生成对应的pojo类的文件
 	 writerPojoClass.writerPojosClass();
 	 //生成对应的查询类Query
 	 writerQueryClass.writerQueryClass();
+	 //生成mapper类文件
+	 writerMapperClass.writerMappersClass();
  }
 
 

@@ -6,13 +6,13 @@ import configuration.config;
 import configuration.tableStruct.tableFieldDefine;
 
 public class updateTemplate {
-private static String updateAll_id="updateAll";
-private static String updateNoNull_id="updateNoNull";
+public static String updateAll_id="updateAll";
+public static String updateNoNull_id="updateNoNull";
 private static String updateHead="<update id=\"%s\" parameterType=\"%s\">\r\nupdate %s \r\nset ";
 private static String updateTail=" where %s = #{%s,jdbcType=%s}";
 private static String fieldTemp=" %s = #{%s,jdbcType=%s},";
 private static String ifFieldTemp="<if test=\"%s != null\"> %s = #{%s,jdbcType=%s},</if>\r\n";
-private static String ifupdateHead=" <update id=\"%s\" parameterType=\"%s\">\r\nupdate %s<set>\r\n";
+private static String ifupdateHead=" <update id=\"%s\" parameterType=\"%s\">\r\nupdate %s \r\n<set>\r\n";
 public static String getUpdateAll(String tableName,List<tableFieldDefine> fields){
 	String className=tableName;
 	if(config.isDig){
@@ -54,6 +54,7 @@ public static String getUpdateNoNull(String tableName,List<tableFieldDefine> fie
 			}
 	}
 	sb.deleteCharAt(sb.toString().length()-1);
+	sb.append("</set>\r\n");
 	sb.append(String.format(updateTail, idDF.getFieldName(), idDF.getFieldName(),idDF.getJdbcType()));
 	sb.append("\r\n</update>\r\n");
 	return sb.toString();

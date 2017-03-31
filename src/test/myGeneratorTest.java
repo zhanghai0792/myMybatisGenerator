@@ -7,7 +7,7 @@ public class myGeneratorTest {
 
 	public static void main(String[] args) {
 		//config.setCreateFilePath(createFilePath);
-		config.config();
+		config.configuration();
 		config.write();
 
 	}

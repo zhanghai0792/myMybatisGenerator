@@ -4,8 +4,8 @@ import configuration.config;
 
 public class selectTemplate {
 private static String getBasic_content="\r\n<select id=\"%s\" parameterType=\"%s\" resultMap=\"%s\">\r\n<include refid=\"%s\" />\r\n<where>\r\n<if test=\"cond ！= null\">${cond}</if>\r\n<if test=\"pojos != null\">\r\n and %s.id in\r\n<foreach collection=\"pojos\" open=\"(\" close=\")\" separator=\",\" item=\"pojo\">\r\n#{pojo.id}\r\n</foreach>\r\n</if>\r\n</where>\r\n<if test=\"orderBy != null\"> order by ${orderBy}</if>\r\n<if test=\"recordIndex !=null\"> limit #{recordIndex},#{pageSize}</if>\r\n</select>\r\n";
-private static String getBasic_id="getBasic";
-private static String getDetail_id="getDetail";
+public static String getBasic_id="getBasic";
+public static String getDetail_id="getDetail";
 public static String count_content="\r\n<select id=\"%s\" parameterType=\"%s\" resultType=\"long\">\r\nselect count(id) from %s\r\n<where>\r\n<if test=\"cond ！= null\">${cond}</if>\r\n</where>\r\n</select>\r\n";
 public static String count_id="count";
 
