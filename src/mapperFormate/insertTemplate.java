@@ -10,7 +10,7 @@ public static String insertNoNull_id="saveNoNull";
 public static String insertAll_id="save";
 public static String insert_head="\r\n<insert id=\"%s\" parameterType=\"%s\" useGeneratedKeys=\"true\" keyProperty=\"%s\">\r\ninsert into %s";
 public static String insert_values="#{%s,jdbcType=%s},";
-public static String trim_content="<trim prefix=\"%s\" suffix=\")\" suffixOverrides=\",\">\r\n";
+public static String trim_content="\r\n<trim prefix=\"%s\" suffix=\")\" suffixOverrides=\",\">\r\n";
 public static String ifField_insert_content=" <if test=\"%s != null\">\r\n%s,\r\n</if>\r\n";
 public static String ifField_value_content="<if test=\"%s != null\">\r\n#{%s,jdbcType=%s},\r\n</if>\r\n";
 
@@ -30,7 +30,7 @@ public static String getInsertAll(String tableName,List<tableFieldDefine> fields
 	for(tableFieldDefine f:fields){
 		if(f.isPrimaryKey()){
 			keyFd=f;
-			break;
+			continue;
 		}
 		insertHead.append(f.getFieldName()+",");
 		insertTail.append(String.format(insert_values, f.getFieldName(),f.getJdbcType()));
@@ -38,7 +38,7 @@ public static String getInsertAll(String tableName,List<tableFieldDefine> fields
 	insertHead.deleteCharAt(insertHead.length()-1);
 	insertTail.deleteCharAt(insertTail.length()-1);
 	insertTail.append(")\r\n</insert>\r\n");
-	insertHead.append(") ");
+	insertHead.append(") \r\n");
 	
 	return String.format(insert_head, insertAll_id,className,keyFd.getFieldName(),tableName)+insertHead.toString()+insertTail.toString();
 }
@@ -57,9 +57,9 @@ public static String getInsertNoNull(String tableName,List<tableFieldDefine> fie
 	for(tableFieldDefine f:fields){
 		if(f.isPrimaryKey()){
 			keyFd=f;
-			break;
+			continue;
 		}
-		insertHead.append(String.format(ifField_insert_content, f.getFieldName()));
+		insertHead.append(String.format(ifField_insert_content, f.getFieldName(),f.getFieldName()));
 		insertTail.append(String.format(ifField_value_content, f.getFieldName(),f.getFieldName(),f.getJdbcType()));
 	}
 	

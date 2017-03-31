@@ -9,7 +9,7 @@ public class myGeneratorTest {
 		//config.setCreateFilePath(createFilePath);
 		config.configuration();
 		config.write();
-
+ System.out.println("ok");
 	}
 
 }
