@@ -21,7 +21,9 @@ public class writerMapperClass {
  public static File queryPackage;
 private static void createqueryPackage(){
 	  if(queryPackage==null){
-		  queryPackage=new File(config.createFilePath+"/"+config.mapperPackage);
+		  String classFold=config.mapperPackage.replace(".", "/");
+		 // queryPackage=new File(config.createFilePath+"/"+config.mapperPackage);
+		  queryPackage=new File(config.createFilePath+"/"+classFold);
 		  if(!queryPackage.exists())
 			  queryPackage.mkdirs();
 	  }

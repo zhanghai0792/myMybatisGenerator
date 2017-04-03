@@ -17,7 +17,9 @@ public class writerMapperXml {
  public static File fold;
 private static void createFold(){
 	  if(fold==null){
-		  fold=new File(config.createFilePath+"/"+config.mapperPackage);
+		  //fold=new File(config.createFilePath+"/"+config.mapperPackage);
+		  String classFold=config.mapperPackage.replace(".", "/");
+		  fold=new File(config.createFilePath+"/"+classFold);
 		  if(!fold.exists())
 			  fold.mkdirs();
 	  }

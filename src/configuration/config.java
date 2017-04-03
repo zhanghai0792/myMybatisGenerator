@@ -15,12 +15,12 @@ import configuration.write.writerMapperXml;
 public class config {
 	//表名与别名的标记符
 public static String splitSingn="_";
-public static String pojoPackage="pojo";
+public static String pojoPackage="com.jm.pojo";
 public static String queryParentClassName="queryParams";
 public static String pojoParentClassName="basicModel";
-public static String queryPackageName="query";
+public static String queryPackageName="com.jm.query";
 public static String queryStuff="QueryParams";//查询变量的后缀名
-public static String mapperPackage="dao";
+public static String mapperPackage="com.jm.dao";
 public static String mapperParentClassName="daoTemplate";
 public static String mapperPackageStuff="Dao";//dao的后缀名
 public final static boolean isDig=true;//pojo类首字母是否大写

@@ -20,7 +20,9 @@ public class writerQueryClass {
  public static File queryPackage;
 private static void createqueryPackage(){
 	  if(queryPackage==null){
-		  queryPackage=new File(config.createFilePath+"/"+config.queryPackageName);
+		  //queryPackage=new File(config.createFilePath+"/"+config.queryPackageName);
+		  String classFold=config.queryPackageName.replace(".", "/");
+		  queryPackage=new File(config.createFilePath+"/"+classFold);
 		  if(!queryPackage.exists())
 			  queryPackage.mkdirs();
 	  }

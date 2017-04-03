@@ -19,7 +19,9 @@ public class writerPojoClass {
  public static File pojopackage;
 private static void createpojopackage(){
 	  if(pojopackage==null){
-		  pojopackage=new File(config.createFilePath+"/"+config.pojoPackage);
+		  String classFold=config.pojoPackage.replace(".", "/");
+		  pojopackage=new File(config.createFilePath+"/"+classFold);
+		 // pojopackage=new File(config.createFilePath+"/"+config.pojoPackage);
 		  if(!pojopackage.exists())
 			  pojopackage.mkdirs();
 	  }
