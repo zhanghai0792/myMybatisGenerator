@@ -8,7 +8,7 @@ public class tableFieldDefine {
  private int dotNumber;
  private boolean isNull;
  private boolean isPrimaryKey;//是否为主键
-
+ private String comment;//注释
  
  
 public String getFieldName() {
@@ -52,7 +52,7 @@ public tableFieldDefine() {
 	// TODO Auto-generated constructor stub
 }
 
-public tableFieldDefine(String fieldName, String jdbcType,String javaType, int length, int dotNumber, int isNull) {
+public tableFieldDefine(String fieldName, String jdbcType,String javaType, int length, int dotNumber, int isNull,String comment) {
 	super();
 	this.fieldName = fieldName;
 	this.jdbcType =jdbcAndJavaTypesMaps.jdbc_TypesMap.get(jdbcType.toUpperCase());
@@ -60,6 +60,7 @@ public tableFieldDefine(String fieldName, String jdbcType,String javaType, int l
 	this.length = length;
 	this.dotNumber = dotNumber;
 	this.isNull =(isNull==1);
+	this.comment=comment;
 }
 public boolean isPrimaryKey() {
 	return isPrimaryKey;
@@ -76,6 +77,7 @@ public tableFieldDefine(String fieldName, String jdbcType,String javaType, int l
 	this.dotNumber = dotNumber;
 	this.isNull =(isNull==1);
 	this.isPrimaryKey = isPrimaryKey;
+
 }
 public String getJavaType() {
 	return javaType;
@@ -83,5 +85,13 @@ public String getJavaType() {
 public void setJavaType(String javaType) {
 	this.javaType = javaType;
 }
+public String getComment() {
+	return comment;
+}
+public void setComment(String comment) {
+	this.comment = comment;
+}
  
+
+
 }

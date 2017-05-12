@@ -99,6 +99,9 @@ static{
 	 jdbc_TypesMap.put("INT", "INTEGER");
      java_TypesMap.put("INTEGER", "Integer");
      
+     jdbc_TypesMap.put("ENUM", "INTEGER");
+     java_TypesMap.put("INTEGER", "Integer");
+     
      
      jdbc_TypesMap.put("TINYINT", "TINYINT");
      java_TypesMap.put("TINYINT", "Byte");

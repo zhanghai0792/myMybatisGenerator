@@ -13,7 +13,7 @@ public class classCreateTemplate {
 	private static String basicClass="package %s;\r\nimport java.io.Serializable;\r\npublic class %s implements Serializable{\r\n protected Integer id;\r\npublic Integer getId() {\r\nreturn id;\r\n}\r\npublic void setId(Integer id) {\r\nthis.id = id;\r\n\r\n}public boolean equals(Object obj) {\r\n if(this.getClass().getName().equals(obj.getClass().getName())){\r\nreturn this.hashCode()==obj.hashCode();\r\n}\r\nreturn false;\r\n}\r\npublic int hashCode() {\r\nint basic=this.getClass().hashCode()*1000;\r\nif(id==null){\r\nreturn -basic;\r\n}else{\r\nreturn basic+id;\r\n}\r\n}\r\n}";
 	private static String classItemFormat="public %s get%s() {\r\nreturn %s;\r\n}\r\n\r\npublic void set%s(%s %s) {\r\nthis.%s = %s;\r\n}\r\n";
 	private static String classStringItemFormat="public %s get%s() {\r\nreturn %s;\r\n}\r\n\r\npublic void set%s(%s %s) {\r\nthis.%s = %s == null ? null : %s.trim();\r\n}\r\n";
-	private static String fieldContent="private %s %s;\r\n";
+	private static String fieldContent="private %s %s;//%s\r\n";
 	public static String getBasicClass(){
 		 String className=config.pojoParentClassName;
 		if(config.isDig){
@@ -37,7 +37,7 @@ public class classCreateTemplate {
 			//是主键id
 			if(df.isPrimaryKey())
 				continue;
-			classContent.append(String.format(fieldContent, df.getJavaType(),df.getFieldName()));
+			classContent.append(String.format(fieldContent, df.getJavaType(),df.getFieldName(),df.getComment()));
 			if("String".equals(df.getJavaType())){
 				//字符串格式处理
 				classMethod.append(String.format(classStringItemFormat,df.getJavaType(),myStringUtil.firstCharUpper(df.getFieldName()),df.getFieldName(),myStringUtil.firstCharUpper(df.getFieldName()),df.getJavaType(),df.getFieldName(),df.getFieldName(),df.getFieldName(),df.getFieldName()));

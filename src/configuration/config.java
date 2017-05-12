@@ -24,10 +24,10 @@ public static String mapperPackage="com.jm.dao";
 public static String mapperParentClassName="daoTemplate";
 public static String mapperPackageStuff="Dao";//dao的后缀名
 public final static boolean isDig=true;//pojo类首字母是否大写
- private static String url="jdbc:mysql://localhost/students";
+ private static String url="jdbc:mysql://localhost/integrateplatform";
  private static String driver="com.mysql.jdbc.Driver";
  private static String userName="root";
- private static String pwd="123";
+ private static String pwd="123456";
 public static String createFilePath="c:\\mapper";
  public static DatabaseMetaData  m_DBMetaData =null;
  public static Connection conn;

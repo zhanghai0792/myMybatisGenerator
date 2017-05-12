@@ -36,6 +36,7 @@ public static void readTableAndFields() {
 		
 		    String columnName;
 		    String columnType;
+		    
 		    while(rs.next()){
 		    	fields=new ArrayList<tableFieldDefine>(0);
 		    	if(keyRs!=null&&!keyRs.isClosed()) 
@@ -54,14 +55,16 @@ public static void readTableAndFields() {
 		    	   int datasize = colRet.getInt("COLUMN_SIZE");
 		    	   int digits = colRet.getInt("DECIMAL_DIGITS");
 		    	   int nullable = colRet.getInt("NULLABLE");*/
+		    		
 		    		 if(keyName!=null&&keyName.equals(colRet.getString("COLUMN_NAME"))){
 		    			 //主键
 		    			 f=new tableFieldDefine(colRet.getString("COLUMN_NAME"), colRet.getString("TYPE_NAME"), colRet.getString("TYPE_NAME"),colRet.getInt("COLUMN_SIZE"),colRet.getInt("DECIMAL_DIGITS"), colRet.getInt("NULLABLE"),true);	
 		    			 fields.add(0,f);
 		    	   }
 		    		 else{
-		    			 f=new tableFieldDefine(colRet.getString("COLUMN_NAME"), colRet.getString("TYPE_NAME"), colRet.getString("TYPE_NAME"),colRet.getInt("COLUMN_SIZE"),colRet.getInt("DECIMAL_DIGITS"), colRet.getInt("NULLABLE"));
-		    			  fields.add(f);
+		    			 f=new tableFieldDefine(colRet.getString("COLUMN_NAME"), colRet.getString("TYPE_NAME"), colRet.getString("TYPE_NAME"),colRet.getInt("COLUMN_SIZE"),colRet.getInt("DECIMAL_DIGITS"), colRet.getInt("NULLABLE"),colRet.getString("REMARKS"));
+		    			// System.out.println(colRet.getString("COLUMN_NAME")+":"+colRet.getString("TYPE_NAME"));
+		    			 fields.add(f);
 		    		 }
 		    	  }
 		    	

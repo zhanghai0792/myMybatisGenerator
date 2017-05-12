@@ -25,7 +25,6 @@ public class mapperXmlTemplate {
 		sb.append(deleteTemplate.getDeleteById(tableName));
 		sb.append(deleteTemplate.getDeleteByIds(tableName));
 		sb.append(deleteTemplate.getdeleteByObjects(tableName));
-		
 		sb.append(insertTemplate.getInsertAll(tableName, fds));
 		sb.append(insertTemplate.getInsertNoNull(tableName, fds));
 		
