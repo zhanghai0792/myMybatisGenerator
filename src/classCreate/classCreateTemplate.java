@@ -14,6 +14,7 @@ public class classCreateTemplate {
 	private static String classItemFormat="public %s get%s() {\r\nreturn %s;\r\n}\r\n\r\npublic void set%s(%s %s) {\r\nthis.%s = %s;\r\n}\r\n";
 	private static String classStringItemFormat="public %s get%s() {\r\nreturn %s;\r\n}\r\n\r\npublic void set%s(%s %s) {\r\nthis.%s = %s == null ? null : %s.trim();\r\n}\r\n";
 	private static String fieldContent="private %s %s;//%s\r\n";
+	private static String dateFieldContent="private %s %s=new Date();//%s\r\n";
 	public static String getBasicClass(){
 		 String className=config.pojoParentClassName;
 		if(config.isDig){
@@ -37,12 +38,17 @@ public class classCreateTemplate {
 			//是主键id
 			if(df.isPrimaryKey())
 				continue;
-			classContent.append(String.format(fieldContent, df.getJavaType(),df.getFieldName(),df.getComment()));
+			if("java.util.Date".equals(df.getJavaType())){
+				classContent.append(String.format(dateFieldContent, df.getJavaType(),df.getFieldName(),df.getComment()));			
+			}else{
+				classContent.append(String.format(fieldContent, df.getJavaType(),df.getFieldName(),df.getComment()));					
+			}
 			if("String".equals(df.getJavaType())){
 				//字符串格式处理
 				classMethod.append(String.format(classStringItemFormat,df.getJavaType(),myStringUtil.firstCharUpper(df.getFieldName()),df.getFieldName(),myStringUtil.firstCharUpper(df.getFieldName()),df.getJavaType(),df.getFieldName(),df.getFieldName(),df.getFieldName(),df.getFieldName()));
 				continue;
 			}
+			//System.out.println(df.getFieldName()+"  "+df.getJdbcType());
 			
 			if(df.getJavaType().indexOf(".")>0){
 				if(!imports.contains(df.getJavaType())){

@@ -20,7 +20,7 @@ public static String mapper(String tableName,List<tableFieldDefine> fields,Strin
 	}
 	columm_content.deleteCharAt(columm_content.length()-1);
 	//columm_content.append(" from "+tableName+" as "+aliaTabel);
-	columm_content.append(" from "+tableName+" as "+tableName);
+	columm_content.append(" \r\nfrom "+tableName+" as "+tableName);
 	columm_content.append(" \r\n</sql>\r\n");
 	return columm_content.toString();
 }
